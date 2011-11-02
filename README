@@ -2,6 +2,5 @@ bitfinders
 ----------
 
   >>> import bitcoin
-  >>> britcoin = bitcoin.BritCoinApi
   >>> britcoin = bitcoin.BritCoinApi()
   >>> britcoin.get_offers()
