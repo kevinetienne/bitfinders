@@ -3,7 +3,7 @@ helper to parse bitcoin values
 """
 
 from BeautifulSoup import BeautifulSoup
-import urllib
+import urllib2
 try:
     import simplejson as json
 except ImportError:
@@ -20,6 +20,8 @@ class BitCoinError(Exception):
 class BitCoinApi(object):
     """
     parent class for the differents api
+    don't instanciate this class directly instead create
+    a subclass
     """
     def __init__(self, **kwargs):
         self.md5_offers = None
@@ -27,7 +29,7 @@ class BitCoinApi(object):
         self.md5_ticker = None
 
     def _get_json(self, action=None, *args, **kwargs):
-        f = urllib.urlopen("%s%s" % (self.URI, action))
+        f = urllib2.urlopen("%s%s" % (self.URI, action))
         if f:
             return f.read()
         return None
